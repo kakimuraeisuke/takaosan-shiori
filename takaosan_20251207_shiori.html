@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>2025/12/7 高尾山紅葉登山しおり</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg-body: #f3f4f6;
+      --bg-page: #ffffff;
+      --accent: #ef4444;
+      --accent-soft: #fee2e2;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --border-subtle: #e5e7eb;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+      background: radial-gradient(circle at top left, #fef3c7 0, #f3f4f6 40%, #e5e7eb 100%);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .frame {
+      width: min(420px, 100%);
+      aspect-ratio: 9 / 16;
+      background: linear-gradient(145deg, rgba(255,255,255,0.96), rgba(248,250,252,0.98));
+      border-radius: 32px;
+      box-shadow:
+        0 20px 45px rgba(15, 23, 42, 0.18),
+        0 0 0 1px rgba(148, 163, 184, 0.25);
+      padding: 18px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(248, 113, 113, 0.18), transparent 55%),
+        radial-gradient(circle at 92% 100%, rgba(37, 99, 235, 0.14), transparent 55%);
+      opacity: 0.8;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      padding: 18px 16px 16px;
+      overflow: hidden;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .tag {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: 17px;
+      line-height: 1.4;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .sub-date {
+      font-size: 11px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .header-icon {
+      margin-left: auto;
+      width: 40px;
+      height: 40px;
+      border-radius: 16px;
+      background: radial-gradient(circle at 30% 20%, #fecaca, #f97316);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 10px 20px rgba(248, 113, 113, 0.4);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 8px;
+    }
+
+    .pill {
+      font-size: 11px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      color: var(--text-muted);
+      background: rgba(248, 250, 252, 0.8);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      white-space: nowrap;
+    }
+
+    .pill strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .scroll-area {
+      flex: 1;
+      overflow-y: auto;
+      padding-right: 4px;
+      margin-top: 6px;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5f5 transparent;
+    }
+
+    .scroll-area::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .scroll-area::-webkit-scrollbar-thumb {
+      background: #cbd5f5;
+      border-radius: 999px;
+    }
+
+    section {
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      background: linear-gradient(145deg, rgba(249, 250, 251, 0.96), rgba(241, 245, 249, 0.96));
+      padding: 10px 11px;
+      margin-bottom: 8px;
+    }
+
+    section:nth-of-type(1) {
+      border: 1px solid rgba(248, 113, 113, 0.3);
+      background: linear-gradient(130deg, rgba(254, 242, 242, 0.98), rgba(255, 251, 235, 0.98));
+    }
+
+    section h2 {
+      font-size: 13px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    section h2 span.icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      background: rgba(248, 113, 113, 0.1);
+      color: var(--accent);
+    }
+
+    section p,
+    section li {
+      font-size: 11px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    section strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    ul, ol {
+      padding-left: 1.2em;
+      margin-top: 2px;
+    }
+
+    .kv-line {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 4px;
+      font-size: 11px;
+      color: var(--text-muted);
+    }
+
+    .kv-line strong {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .timeline {
+      list-style: none;
+      margin-top: 4px;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 52px minmax(0, 1fr);
+      gap: 6px;
+      padding: 3px 0;
+      border-bottom: 1px dashed rgba(209, 213, 219, 0.8);
+    }
+
+    .timeline li:last-child {
+      border-bottom: none;
+    }
+
+    .timeline-time {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .timeline-body {
+      font-size: 11px;
+      line-height: 1.4;
+    }
+
+    .timeline-body span {
+      display: block;
+    }
+
+    .timeline-body span.label {
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .timeline-body span.note {
+      color: var(--text-muted);
+    }
+
+    .chips-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 4px;
+    }
+
+    .chip {
+      font-size: 10px;
+      padding: 3px 6px;
+      border-radius: 999px;
+      background: rgba(37, 99, 235, 0.06);
+      color: #1d4ed8;
+      border: 1px solid rgba(191, 219, 254, 0.9);
+      white-space: nowrap;
+    }
+
+    .list-title {
+      font-size: 11px;
+      font-weight: 600;
+      margin-top: 4px;
+      margin-bottom: 2px;
+    }
+
+    .muted {
+      color: var(--text-muted);
+      font-size: 10px;
+    }
+
+    .link-list {
+      margin-top: 3px;
+    }
+
+    .link-list a {
+      font-size: 10px;
+      display: block;
+      color: #1d4ed8;
+      text-decoration: none;
+      word-break: break-all;
+    }
+
+    .link-list a::before {
+      content: "↗ ";
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 8px;
+      padding-top: 6px;
+      border-top: 1px solid rgba(209, 213, 219, 0.8);
+    }
+
+    .footer-left {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .footer-title {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .footer-badge {
+      font-size: 9px;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: rgba(34, 197, 94, 0.08);
+      color: #15803d;
+      border: 1px solid rgba(134, 239, 172, 0.9);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+      .frame {
+        width: 100%;
+        max-height: calc(100vh - 24px);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="frame">
+    <div class="content">
+      <header>
+        <div>
+          <div class="tag">Takaosan Meetup</div>
+          <h1>高尾山 紅葉登山しおり</h1>
+          <div class="sub-date">2025年12月7日(日) / 日帰り</div>
+        </div>
+        <div class="header-icon">🍁</div>
+      </header>
+
+      <div class="pill-row">
+        <div class="pill"><strong>集合</strong> 09:00 高尾山口駅</div>
+        <div class="pill"><strong>解散</strong> 〜14:00 目安</div>
+        <div class="pill">標高 599m</div>
+        <div class="pill">歩行 約3時間40分</div>
+      </div>
+
+      <div class="scroll-area">
+        <!-- 概要 -->
+        <section>
+          <h2><span class="icon">①</span>イベント概要</h2>
+          <div class="kv-line">
+            <strong>目的：</strong><span>紅葉ハイキング &amp; 社員交流</span>
+          </div>
+          <div class="kv-line">
+            <strong>場所：</strong><span>東京都 八王子市・高尾山</span>
+          </div>
+          <p class="muted" style="margin-top:4px;">
+            ※ 高尾山の紅葉の見頃は例年「11月中旬〜12月上旬」です。<br>
+            ※ 高尾山もみじまつり期間中のため、混雑が予想されます。
+          </p>
+        </section>
+
+        <!-- ルート & タイムテーブル -->
+        <section>
+          <h2><span class="icon">②</span>登山ルート &amp; タイムテーブル</h2>
+          <p><strong>ルート：</strong>高尾山口駅 → 清滝駅 → 6号路 → 山頂 → 1号路 → 清滝駅 → 高尾山口駅</p>
+          <div class="chips-row">
+            <div class="chip">YAMAP 6号路モデルコースベース</div>
+            <div class="chip">歩行距離 約7.6km</div>
+            <div class="chip">累積標高差 約±566m</div>
+          </div>
+          <p class="muted" style="margin-top:4px;">
+            ※ コースタイムは YAMAP 掲載のモデルコースに、休憩・混雑・撮影時間を加味した目安です。
+          </p>
+
+          <ol class="timeline">
+            <li>
+              <div class="timeline-time">09:00</div>
+              <div class="timeline-body">
+                <span class="label">高尾山口駅 改札前</span>
+                <span class="note">集合・点呼・体調確認・トイレ</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">09:20</div>
+              <div class="timeline-body">
+                <span class="label">登山開始</span>
+                <span class="note">清滝駅方面へ移動し、6号路へ</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">10:10</div>
+              <div class="timeline-body">
+                <span class="label">岩屋大師〜琵琶滝付近</span>
+                <span class="note">沢沿いで小休止・写真タイム</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">11:30</div>
+              <div class="timeline-body">
+                <span class="label">6号路終点〜5号路合流</span>
+                <span class="note">木段を登りきったあたり</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">11:40</div>
+              <div class="timeline-body">
+                <span class="label">高尾山 山頂</span>
+                <span class="note">昼食・休憩（約40〜50分）</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">12:45</div>
+              <div class="timeline-body">
+                <span class="label">下山開始（1号路）</span>
+                <span class="note">薬王院経由で舗装路中心のコース</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">13:05</div>
+              <div class="timeline-body">
+                <span class="label">高尾山薬王院</span>
+                <span class="note">参拝・写真・トイレ（10〜15分）</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">13:55</div>
+              <div class="timeline-body">
+                <span class="label">清滝駅前〜高尾山口駅</span>
+                <span class="note">売店・自販機利用可／ここで一旦解散</span>
+              </div>
+            </li>
+            <li>
+              <div class="timeline-time">14:15〜</div>
+              <div class="timeline-body">
+                <span class="label">任意参加：駅前温泉など</span>
+                <span class="note">希望者で入浴・簡単な打ち上げ</span>
+              </div>
+            </li>
+          </ol>
+
+          <p class="muted" style="margin-top:4px;">
+            ※ 日没は16時台のため、14:30までの下山完了を目安とします。
+          </p>
+        </section>
+
+        <!-- 服装・持ち物 -->
+        <section>
+          <h2><span class="icon">③</span>服装・持ち物の目安（想定気温：5〜12℃程度）</h2>
+          <p class="list-title">服装（レイヤリング）</p>
+          <ul>
+            <li><strong>上：</strong>吸汗速乾インナー＋薄手フリース＋防風ジャケット（後述のレインジャケットで代用可）</li>
+            <li><strong>下：</strong>登山用ロングパンツ or ストレッチパンツ（寒がりな方はタイツ＋パンツ）</li>
+            <li>滑りにくいトレッキングシューズ or スニーカー（汚れても良いもの）</li>
+            <li>ニット帽・手袋・ネックウォーマーなどの防寒小物</li>
+          </ul>
+
+          <p class="list-title">持ち物（必携）</p>
+          <ul>
+            <li>デイパック（10〜20L 程度）</li>
+            <li><strong>YAMAPアプリを入れたスマートフォン</strong>＋モバイルバッテリー</li>
+            <li>飲み物 500〜1000ml・昼食（山頂でとろろそばを食べたい方は無くてもOK）・行動食</li>
+            <li>レインウェア（上着のみでも可）・防寒着（休憩中に薄手ダウンや暖かいミドルレイヤーがあると安心）</li>
+            <li>タオル／手ぬぐい・ティッシュ・ウェットティッシュ</li>
+            <li>常備薬・絆創膏・保険証（コピー可）</li>
+            <li>現金（茶屋・売店・温泉などの利用用）</li>
+            <li>折り畳み傘</li>
+          </ul>
+
+          <p class="list-title">あると便利なもの</p>
+          <ul>
+            <li>トレッキングポール（膝が心配な方・2本まで貸せます！）</li>
+            <li>日焼け止め・リップクリーム・予備の靴下</li>
+            <li>サングラス（晴天時の眩しさ対策）</li>
+            <li>温泉入浴後の着替え（下着・Tシャツなど）</li>
+            <li>カメラ（スマホ以外で撮影したい方）</li>
+          </ul>
+        </section>
+
+        <!-- YAMAP -->
+        <section>
+          <h2><span class="icon">④</span>YAMAPアプリ導入ガイド</h2>
+          <p><strong>なぜ使う？</strong></p>
+          <ul>
+            <li>圏外でも現在地がわかる登山用GPSアプリです。</li>
+            <li>高尾山を含む山のルート・コースタイムを確認できます。</li>
+            <li>事前に地図をダウンロードしておけば、電波が弱くても安心です。</li>
+          </ul>
+
+          <p class="list-title">事前準備</p>
+          <ol>
+            <li>スマホのアプリストアで「YAMAP」を検索し、インストールする。</li>
+            <li>アカウント登録・ログインを済ませる。</li>
+            <li>アプリ内で「高尾山」を検索し、登山地図をダウンロードする。</li>
+          </ol>
+
+          <p class="list-title">主なダウンロードリンク</p>
+          <div class="link-list">
+            <a href="https://yamap.com/download" target="_blank" rel="noopener noreferrer">YAMAP 公式ダウンロードページ</a>
+            <a href="https://apps.apple.com/jp/app/yamap-%E3%83%A4%E3%83%9E%E3%83%83%E3%83%97-%E7%99%BB%E5%B1%B1%E5%9C%B0%E5%9B%B3%E3%82%A2%E3%83%97%E3%83%AA/id558780450" target="_blank" rel="noopener noreferrer">iOS版（App Store）</a>
+            <a href="https://play.google.com/store/apps/details?id=jp.co.yamap" target="_blank" rel="noopener noreferrer">Android版（Google Play）</a>
+          </div>
+        </section>
+
+        <!-- マナー -->
+        <section>
+          <h2><span class="icon">⑤</span>安全・マナー・その他</h2>
+          <ul>
+            <li>体調がすぐれない場合は無理をせず、事前に不参加の連絡をしてください。</li>
+            <li>原則として単独行動は禁止です。</li>
+            <li>トイレは駅・清滝駅・薬王院・山頂などに複数あります。早めの利用を心がけてください。</li>
+            <li>ゴミは必ず各自持ち帰ってください。</li>
+            <li>すれ違い・追い越し時は声を掛け、譲り合ってください。</li>
+            <li>雨天・荒天が予想される場合は、前日までに中止またはルート短縮を判断します。</li>
+          </ul>
+        </section>
+      </div>
+
+      <footer>
+        <div class="footer-left">
+          <div class="footer-title">2025/12/7 高尾山紅葉登山</div>
+        </div>
+        <div class="footer-badge">秋の高尾山</div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
